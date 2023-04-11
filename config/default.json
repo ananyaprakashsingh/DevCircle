@@ -1,0 +1,4 @@
+{
+    "MongoURI":"mongodb+srv://ananya:ananya@cluster0.b1nnx.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret":"ThisIsaSecretKey"
+}

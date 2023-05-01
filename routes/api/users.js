@@ -28,8 +28,8 @@ async (req,res)=>{
         // console.log(email);
 
         //checking email already exist or not
-        const userExists=await User.findOne({email});
-        if(userExists)
+        const user=await User.findOne({email});
+        if(user)
         {
             return res.status(400).send('User already exist')
         }
@@ -60,10 +60,13 @@ async (req,res)=>{
                 id:userDetails.id
             }
         };
-        jwt.sign(payload,config.get('jwtSecret'),{expiresIn:360000},(err,token)=>{
-            if(err) throw err;
-            res.json({token});
-        });
+        jwt.sign(payload,
+            config.get('jwtSecret'),    
+            {expiresIn:360000},
+            (err,token)=>{
+                if(err) throw err;
+                res.json({token});
+            });
         
         // res.send('User registered')
     }
